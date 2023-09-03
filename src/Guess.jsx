@@ -14,6 +14,7 @@ const Guess = () => {
 
 
     let handleSubmit = ()=>{
+        setWinner('Player2')
         if(!(storeValue) || isNaN(storeValue) || (storeValue>10)){
             setmsg('Invalid. Enter a number between 1-10')
         }else{
