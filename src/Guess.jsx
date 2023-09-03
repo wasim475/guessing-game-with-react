@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './guess.css'
 
 const Guess = () => {
+    let inputFocus = useRef(null)
     let [button, setButton] = useState(false)
     let [storeValue, setStoreValue] = useState('')
     let [p1value, setp1value] = useState('')
@@ -11,6 +12,15 @@ const Guess = () => {
     let [counter, setCounter] = useState(3)
     let [IBH, setIBH]= useState(true) //input button hider(IBH)
     let [restart, setRestart] = useState(false)
+    
+    
+
+    useEffect(()=>{
+        inputFocus.current.focus()
+    },[])
+    useEffect(()=>{
+        inputFocus.current.focus()
+    },[])
 
 
     let handleSubmit = ()=>{
@@ -68,7 +78,7 @@ const Guess = () => {
             IBH &&
             <>
         {countHider && <h3> Chance: {counter}</h3>}
-        <input onChange={handleInput} placeholder='Enter a number between 1-10' value={storeValue}/>
+        <input ref={inputFocus} onChange={handleInput} placeholder='Enter a number between 1-10' value={storeValue}/>
         {
             button
             ?
